@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 // Set the child's data to the value passed in from the text box.
                 childRef.setValue(text.getText().toString());
 
+                text.setText("");
+
             }
         });
 
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         if (dataSnapshot.hasChildren()) {
                             DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
                             firstChild.getRef().removeValue();
+                            Toast.makeText(MainActivity.this,"Ítem removido", Toast.LENGTH_SHORT).show();
                         }
                     }
 
